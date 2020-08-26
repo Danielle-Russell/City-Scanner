@@ -1,0 +1,225 @@
+/* Mobile First */
+header {
+  background-color:  #0077B6;
+  color: white;
+  font-family: 'Courier New', Courier, monospace;
+  padding: 20px;
+  text-align: center;
+  font-weight: 600;
+}
+
+#navs {
+  display: none;
+}
+
+.hide {
+  display:none;
+}
+/* Forms */
+#states {
+
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+#selectForm {
+ 
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-bottom: 350px;
+}
+
+form > h1 {
+  font-family: helvetica;
+  font-weight: 600;
+  font-size: 20px;
+}
+  select {
+	display: block;
+  padding: 10px;
+	font-size: 16px;
+	font-family: Helvetica;
+	font-weight: 700;
+	color: #444;
+	box-sizing: border-box;
+	margin: 0;
+	border-radius: 5px;
+   margin-bottom: 50px;
+}  
+
+/* Containers */
+#home-container {
+  background-image: url("https://images.squarespace-cdn.com/content/v1/5a70bcb1cf81e0e8a4d5ef65/1518459048194-14W5FQC440H4LNFLO4KL/ke17ZwdGBToddI8pDm48kGPJwLLCszQMOXCKRip_r7oUqsxRUqqbr1mOJYKfIPR7LoDQ9mXPOjoJoqy81S2I8N_N4V1vUb5AoIIIbLZhVYy7Mythp_T-mtop-vrsUOmeInPi9iDjx9w8K4ZfjXt2dowi5eAYwTDwW82Y64htB_ttK_NvGRcf0bq7G9FlT6SEJvwGh1qtNWvMhYKnvaKhbA/Pittsburgh+Skyline.jpg?format=1500w");
+  repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+   justify-content: center;
+   padding: 100px;
+}
+
+#crime-container {
+  display: flex;
+  flex-direction: column;
+}
+
+#covid {
+  padding-bottom: 100px;
+}
+
+
+#results, #demographics, #housing, #income {
+ display: flex;
+ flex-direction: column;
+}
+
+
+
+
+/* Headings */
+
+#heading, #crime-heading {
+  text-align: center;
+   padding-top: 100px;
+}
+
+h2 {
+  font-size: 25px;
+  text-align: center;
+  font-weight: 400;
+}
+
+h3 {
+  font-style: italic;
+}
+
+
+#education, #employ, #demos, #house {
+  padding-top: 100px;
+}
+
+
+/* Items */
+
+.item1, .item2, .item3, .item4, .item5, .demo1, .demo2, .demo3, .house1, .house2, .house3 {
+  border: solid;
+  flex: 3;
+margin: 25px;
+background-color: #CAF0F8;
+font-family: sans-serif;
+ padding: 50px;
+}
+
+.item1:hover, .item2:hover, .item3:hover, .item4:hover, .item5:hover, .demo1:hover, .demo2:hover, .demo3:hover, .house1:hover, .house2:hover, .house3:hover {
+border-radius: 50px;
+ transform: scale(1.1);
+}
+
+
+.crimeItem, .crimeItem2 {
+  flex: 2;
+}
+
+/* Buttons */
+
+button {
+  display: block;
+  background-color:  #0077B6;
+  padding: 15px;
+  border-radius: 5px;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+}
+
+button:hover {
+  transform: scale(1.1);
+}
+
+p {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 20px;
+}
+
+footer {
+  color: white;
+  text-align: center;
+  padding: 10px;
+  background-color:  #0077B6;
+}
+
+@media only screen and (min-width: 800px)  {
+
+  header {
+    display: none;
+  }
+
+
+#states {
+   padding-bottom: 350px;
+}
+  
+  li {
+  margin: 20px;
+}
+
+ #home-container {
+ flex-direction: row;
+  padding: 100px;
+   padding-top: 200px;
+  }
+  
+#results-container {
+  margin: 200px;
+  padding-bottom: 100px;
+}
+
+#results, #crime-container, #demographics, #housing , #income{
+  display: flex;
+  flex-direction: row;
+}
+ /* Nav Bar */
+
+#navs {
+  
+  display: block;
+   height: 80px;
+  overflow: hidden;
+  background-color: #0077B6;
+  position: fixed; 
+  top: 0; 
+  width: 100%; 
+}
+
+#navs ul {
+  display: inline;
+ float: left;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  list-style: none;
+}
+
+ #navs ul li {
+  display: inline-block;
+}
+
+a:link{
+  text-decoration: none;
+font-size: 20px;
+font-family: 'Courier New', Courier, monospace;
+  font-size: 15px;
+  color:  white;
+}
+
+a:visited {
+  color: white;
+}
+
+#title {
+  font-family: 'Courier New', Courier, monospace;
+  text-transform: Uppercase;
+  color: white;
+}
+
+}
+

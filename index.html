@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>City scanner</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+
+  </head>
+  <!--Body -->
+  <body>
+    
+<header>City Scanner</header>
+
+        <!-- Section that contains all of the home page html -->
+      <section id="home-container">
+         
+        <!-- Form that hosts all state names and FIPS -->
+     <form id="states">
+<h1> Select your State</h1>
+
+<select id = "selectState">
+
+  <option>Select State</option>
+  <option name = "AL" value = "01">AL</option>
+  <option name = "AK" value = "02">AK</option>  
+  <option name = "AZ" value = "04">AZ</option>
+  <option name = "AR" value = "05">AR</option>
+  <option name = "CA" value = "06">CA</option>
+  <option name = "CO" value = "08">CO</option>
+  <option name = "CT" value = "09">CT</option>
+  <option name = "DE" value = "10">DE</option>
+  <option name = "DC" value = "11">DC</option>
+  <option name = "FL" value = "12">FL</option>
+  <option name = "GA" value = "13">GA</option>
+  <option name = "HI" value = "15">HI</option>
+  <option name = "ID" value = "16">ID</option>
+  <option name = "IL" value = "17">IL</option>
+  <option name = "IN" value = "18">IN</option>
+  <option name = "IA" value = "19">IA</option>
+  <option name = "KS" value = "20">KS</option>
+  <option name = "KY" value = "21">KY</option>
+  <option name = "LA" value = "22">LA</option>
+  <option name = "23" value = "23">ME</option>
+  <option name = "MD" value = "24">MD</option>
+  <option name = "MS" value = "25">MA</option>
+  <option name = "MI" value = "26">MI</option>
+  <option name = "MN" value = "27">MN</option>
+  <option name = "MS" value = "28">MS</option>
+  <option name = "MO" value = "29">MO</option>    
+  <option name = "MT" value = "30">MT</option>
+  <option name = "NE" value = "31">NE</option>
+  <option name = "NV" value = "32">NV</option>    
+  <option name = "NH" value = "33">NH</option>
+  <option name = "NJ" value = "34">NJ</option>
+  <option name = "NM" value = "35">NM</option>
+  <option name = "NY" value = "36">NY</option>
+  <option name = "NC" value = "37">NC</option>
+  <option name = "ND" value = "38">ND</option>    
+  <option name = "OH" value = "39">OH</option>
+  <option name = "OK" value = "40">OK</option>
+  <option name = "OR" value = "41">OR</option>     
+  <option name = "PA" value = "42">PA</option>
+  <option name = "PR" value = "72">PR</option>
+  <option name = "RI" value = "44">RI</option>
+  <option name = "SC" value = "45">SC</option>
+  <option name = "SD" value = "46">SD</option>
+  <option name = "TN" value = "47">TN</option>
+  <option name = "TX" value = "48">TX</option>
+  <option name = "UT" value = "49">UT</option>
+  <option name = "VT" value = "50">VT</option>
+  <option name = "VA" value = "51">VA</option>
+  <option name = "VI" value = "78">VI</option>
+  <option name = "WA" value = "53">WA</option>     
+  <option name = "WV" value = "54">WV</option>
+  <option name = "WI" value = "55">WI</option>
+  <option name = "WY" value = "56">WY</option>
+
+</select>
+      <button type="submit" id="submit">Submit</button>
+      </form>
+      <!-- Dynamic form for city names -->
+      <form id="selectForm" class="hide">
+        <h1>Select Your City</h1>
+ <select id = "select">
+   <option>Select City</option>
+     </select>
+<button id="button" type="submit">Submit</button>
+     </form>
+
+     <!-- Nav Bar -->
+       <div id="navs">
+  <nav>
+    <ul>
+      <li id="title">City Scanner</li>
+      <li><a href="#left">Home</a></li>
+      <li><a href="#heading">COVID-19 Data</a></li>
+      <li><a href="#crime-heading">National and State Crime Rates</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#employ">Income and Employment</a></li>
+      <li><a href="#demos">Demographics</a></li>
+      <li><a href="#house">Housing</a></li>
+      
+    </ul>
+ 
+    </nav>
+    
+       </section>
+      
+        
+    
+      
+  </div>
+
+  <!-- Container for the rest of the page that appears after selection -->
+<div id="results-container" class="hide">
+
+     <h1 id="heading" class="empty"></h1>
+
+     <hr>
+<!-- COVID-19 Data Section -->
+
+   <div id= "covid">
+
+<!-- Bar chart -->
+
+<canvas id="covidChart" width="800" height="450"></canvas>
+
+   </div>
+
+     <h1 id="crime-heading">National and State Crime Statistics </h1>
+
+     <hr>
+        <!-- Crime Container -->
+
+  <section id="crime-container" >
+
+   <!-- Pie Charts -->
+
+<div class="crimeItem" class="empty">
+
+    <canvas id="pieChart"></canvas>
+
+</div>
+
+<div class="crimeItem2" class="empty">
+
+ <canvas id="secondPieChart"></canvas>
+
+
+</div>
+    </section>
+
+
+<h1 id="education" class= "empty"></h1>
+
+<hr>
+<!-- Container for Education -->
+
+      <section id="results">
+        
+      <div class="item1">
+        <ul class="empty"></ul>
+        <ol class="empty"></ol>
+        </div>
+
+  <div class="item2">
+    <ul class="empty"></ul>
+    <ol class="empty"></ol>
+        </div>
+
+          <div class="item3">
+            <ul class="empty"></ul>
+            <ol class="empty"></ol>
+
+        </div>
+
+        </section>
+
+         <h1 id="employ" class= "empty"></h1>
+
+         <hr>
+         <!--Container for Income and Employment-->
+
+         <section id="income">
+          
+            <div class="item4">
+
+            <ul class="empty"></ul>
+            <ol class="empty"></ol>
+
+        </div>
+
+        <div class="item5">
+
+            <ul class="empty"></ul>
+            <ol class="empty"></ol>
+
+        </div>
+</section>
+
+   <h1 id="demos" class="empty"></h1>
+
+   <hr>
+<!-- Container for Demographics -->
+
+    <section id="demographics">
+   
+    
+       <div class="demo1">
+          <ul class="empty"></ul>
+         <ol class="empty"></ol>
+        </div>
+       
+         <div class="demo2">
+            <ul class="empty"></ul>
+            <ol class="empty"></ol>
+        </div>
+
+    </section>
+
+<h1 id="house" class="empty"></h1>
+<hr>
+<!--Container for Housing-->
+
+    <section id="housing">
+
+    <div class="house1">
+       <ul class="empty"></ul>
+       <ol class="empty"></ol>
+        </div>
+
+         <div class="house2">
+            <ul class="empty"></ul>
+           <ol class="empty"></ol>
+        </div>
+
+         <div class="house3">
+            <ul class="empty"></ul>
+           <ol class="empty"></ol>
+        </div>
+        
+      </section>
+
+ </div>
+
+<footer>
+    *All information is retrieved from the 2018 American Community Survey from offical Census, and crime data from the Federal Bureau of Investigation.
+    </footer>
+  
+   
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+      <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
