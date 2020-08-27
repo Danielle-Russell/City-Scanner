@@ -78,6 +78,10 @@ form > h1 {
 
 /* Headings */
 
+h1 {
+text-align: center;
+}
+
 #heading, #crime-heading {
   text-align: center;
    padding-top: 100px;
