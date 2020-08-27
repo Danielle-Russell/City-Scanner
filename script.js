@@ -35,8 +35,8 @@ new Chart(document.getElementById("covidChart"), {
       labels: ["Positive Cases", "Number Hospitalized", "Number of Deaths"],
       datasets: [
         {
-          label: "Number of positive covid cases",
-          backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+          label: "Number of COVID-19 Cases",
+          backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f"],
           data: [responseJson.positive, responseJson.hospitalizedCurrently, responseJson.death]
         }
       ]
@@ -105,7 +105,7 @@ var data = {
                 '#5E548E',
                 '#3F88C5'
               ],
-            data: [crimes.homicide, violentCrime,crimes.robbery,crimes.property_crime,crimes.burglary,crimes.larceny,crimes.motor_vehicle_theft,crimes.arson,],
+            data: [crimes.homicide, violentCrime, crimes.robbery, crimes.property_crime, crimes.burglary, crimes.larceny,crimes.motor_vehicle_theft, crimes.arson],
 
             borderColor:	['white'],
             borderWidth: [2,2]
@@ -163,7 +163,7 @@ var data = {
                 '#5E548E',
                 '#3F88C5'
               ],
-            data: [crimes.homicide, violentCrime,crimes.robbery,crimes.property_crime,crimes.burglary,crimes.larceny,crimes.motor_vehicle_theft,crimes.arson,],
+              data: [crimes.homicide, violentCrime, crimes.robbery, crimes.property_crime, crimes.burglary, crimes.larceny,crimes.motor_vehicle_theft, crimes.arson],
 
             borderColor:	['white'],
             borderWidth: [2,2]
@@ -195,7 +195,7 @@ var myPie = new Chart(ctx, {
 
 //URL for fetch, for city census data 
 function censusURL(input) {
-  //city name, mean income, unemployment rate, high school enrollment % (public), %private school,bachelors degree,median age, male to female ratio,  median house price(occupied by owner ), median real estate tax, average rental cost, population
+  //city name, mean income, unemployment rate, high school enrollment % (public), %private school,bachelors degree,median age, male to female ratio,  median house price(occupied by owner ), median real estate tax responseJSON[9] city[10], average rental cost response[10]city[11], population
 
 let params = `NAME,S1901_C01_013E,S2301_C04_001E,S1401_C04_007E,S1401_C06_007E,S1501_C02_005E,S0101_C01_032E,S0101_C01_033E,S2506_C01_009E,S2507_C01_058E,S2503_C05_024E,S0101_C01_001E`;
 
@@ -251,22 +251,26 @@ function displayNational(responseJson) {
 //Populates every result div with census info on national averages
 function populateNation (responseJson) {
   let separator = parseFloat(responseJson[1][1]).toLocaleString('en')
-  let secondSeparator = parseFloat(responseJson[1][8]).toLocaleString('en')
-  let thirdSeparator = parseFloat(responseJson[1][10]).toLocaleString('en')
-  let fourthSeparator = parseFloat(responseJson[1][9]).toLocaleString('en')
+  let secondSeparator = parseFloat(responseJson[1][8]).toLocaleString('en');
+  let thirdSeparator = parseFloat(responseJson[1][10]).toLocaleString('en');
+  let fourthSeparator = parseFloat(responseJson[1][9]).toLocaleString('en');
+  let fifthSeparator = parseFloat(responseJson[1][11]).toLocaleString('en');
  
-  let string = "<strong><italic>Compare to the National Average:</strong>"
+  let string = "<h3> Compare to the National Average: ";
+
 console.log(responseJson)
-  $(".item1 ol").append(`<h3>${string}${responseJson[1][3]}%`)
-  $(".item2 ol").append(`<h3>${string}${responseJson[1][4]}%`)
-  $(".item3 ol").append(`<h3>${string}${responseJson[1][5]}%`)
-  $(".item4 ol").append(`<h3>${string}$${separator}`)
-  $(".item5 ol").append(`<h3>${string}${responseJson[1][2]}%`)
-  $(".demo1 ol").append(`<h3>${string}${responseJson[1][6]} years`)
-  $(".demo2 ol").append(`<h3>${string}${responseJson[1][7]}Males : 100 Females`)
-  $(".house1 ol").append(`<h3>${string}$${secondSeparator}`)
-  $(".house2 ol").append(`<h3>${string}$${fourthSeparator}`)
-  $(".house3 ol").append(`<h3>${string}$${thirdSeparator}`)
+
+  $(".item1 ol").append(`</h3>${string}${responseJson[1][3]}%`)
+  $(".item2 ol").append(`</h3>${string}${responseJson[1][4]}%`)
+  $(".item3 ol").append(`</h3>${string}${responseJson[1][5]}%`)
+  $(".item4 ol").append(`</h3>${string}$${separator}`)
+  $(".item5 ol").append(`</h3>${string}${responseJson[1][2]}%`)
+  $(".demo1 ol").append(`</h3>${string}${responseJson[1][6]} years`)
+  $(".demo2 ol").append(`</h3>${string}${responseJson[1][7]} Males : 100 Females`)
+  $(".demo3 ol").append(`</h3>${string}${fifthSeparator}`)
+  $(".house1 ol").append(`</h3>${string}$${secondSeparator}`)
+  $(".house2 ol").append(`</h3>${string}$${thirdSeparator}`)
+  $(".house3 ol").append(`</h3>${string}$${fourthSeparator}`)
 }
 
 
@@ -370,7 +374,7 @@ $('.item1 ul').append(`
   <h2>${city[6]}% of people have a Bachelors degree, or higher</h2>`)
 
   $('.item4 ul').append(`
-   <h2>The Mean Income is $${separator}</h2>
+   <h2>The Mean Family Income is $${separator}</h2>
   `)
    
 //Turns unemployment rate string into float, so negative number glitches can be identified and taken out (replaced)
@@ -383,7 +387,7 @@ $('.item1 ul').append(`
 
   } else if (response >= 0) {
 
-    $(".item5 ul").append(`<h2>The Unemployment Rate (16yrs+) was: ${response}%</h2>`)
+    $(".item5 ul").append(`<h2>The Unemployment Rate (16yrs+) is: ${response}%</h2>`)
   }
 
   populateDemo(city)
@@ -396,35 +400,46 @@ function displayState (responseJson) {
 
 //Populates every result div with census info on all states
 function stateAverage (responseJson) {
-  let separator = parseFloat(responseJson[1][1]).toLocaleString('en')
-  let secondSeparator = parseFloat(responseJson[1][8]).toLocaleString('en')
-  let thirdSeparator = parseFloat(responseJson[1][10]).toLocaleString('en')
-  let fourthSeparator = parseFloat(responseJson[1][9]).toLocaleString('en')
-  let string = "<h3>Compare to the state average:"
+  let separator = parseFloat(responseJson[1][1]).toLocaleString('en');
+  let secondSeparator = parseFloat(responseJson[1][8]).toLocaleString('en');
+  let thirdSeparator = parseFloat(responseJson[1][10]).toLocaleString('en');
+  let fourthSeparator = parseFloat(responseJson[1][9]).toLocaleString('en');
+  let fifthSeparator = parseFloat(responseJson[1][11]).toLocaleString('en');
+
+  let string = "<h3>Compare to the state average: ";
+
 console.log(responseJson)
  $('#heading').append(`COVID-19 in ${responseJson[1][0]}`)
-  $(".item1 ol").append(`<h3>${string}${responseJson[1][3]}%`)
-  $(".item2 ol").append(`<h3>${string}${responseJson[1][4]}%`)
-  $(".item3 ol").append(`<h3>${string}${responseJson[1][5]}%`)
-  $(".item4 ol").append(`<h3>${string}$${separator}`)
-  $(".item5 ol").append(`<h3>${string}${responseJson[1][2]}%`)
-  $(".demo1 ol").append(`<h3>${string}${responseJson[1][6]} years`)
-  $(".demo2 ol").append(`<h3>${string}${responseJson[1][7]}Males : 100 Females`)
-  $(".house1 ol").append(`<h3>${string}$${secondSeparator}`)
-  $(".house2 ol").append(`<h3>${string}$${fourthSeparator}`)
-  $(".house3 ol").append(`<h3>${string}$${thirdSeparator}`)
+  $(".item1 ol").append(`</h3>${string}${responseJson[1][3]}%`)
+  $(".item2 ol").append(`</h3>${string}${responseJson[1][4]}%`)
+  $(".item3 ol").append(`</h3>${string}${responseJson[1][5]}%`)
+  $(".item4 ol").append(`</h3>${string}$${separator}`)
+  $(".item5 ol").append(`</h3>${string}${responseJson[1][2]}%`)
+  $(".demo1 ol").append(`</h3>${string}${responseJson[1][6]} years`)
+  $(".demo2 ol").append(`</h3>${string}${responseJson[1][7]} Males : 100 Females`)
+  $(".demo3 ol").append(`</h3>${string}${fifthSeparator}`)
+  $(".house1 ol").append(`</h3>${string}$${secondSeparator}`)
+  $(".house2 ol").append(`</h3>${string}$${thirdSeparator}`)
+  $(".house3 ol").append(`</h3>${string}$${fourthSeparator}`)
 }
 
 //Populates demographics div with census info
 function populateDemo (city) {
+
+  let population = parseFloat(city[12]).toLocaleString('en')
+
   $('.demo1 ul').append(`
     <h2>The Median Age is: ${city[7]} years</h2>
     `)
 
      $('.demo2 ul').append(`
-    <h2>${city[8]} Males: 100 Females</h2>
+    <h2>There are ${city[8]} Males: 100 Females</h2>
     `)
   
+    $('.demo3 ul').append(`
+    <h2>The current population is: ${population}</h2>
+    `)
+
   populateHousing(city) 
 }
 
@@ -436,16 +451,17 @@ function populateHousing(city) {
   $('#education').append(`Education in ${city[0]}`)
  $('#employ').append(`Income and Employment in ${city[0]}`)
  $('#demos').append(`Demographics in ${city[0]}`)
- $('#house').append(`Housing ${city[0]}`)
+ $('#house').append(`Housing in ${city[0]}`)
   $('.house1 ul').append(
     `
     <h2>The median house price is: $${separator}</h2>`)
+
     $('.house2 ul').append(
     `
     <h2>Average monthly rental cost: $${thirdSeparator}</h2>
     `)
      $('.house3 ul').append(
-    `<h2> The median real estate tax is: $${secondSeparator}</h2>
+    `<h2> The median real estate tax is: $${secondSeparator} anually</h2>
     `
   )
 }
