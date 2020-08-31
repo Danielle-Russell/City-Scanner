@@ -1,4 +1,7 @@
 /* Mobile First */
+body {
+  height: 95vh;
+}
 form {
   display: flex;
   flex-direction: column;
