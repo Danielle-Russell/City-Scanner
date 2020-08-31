@@ -9,7 +9,7 @@ function fetchRequest(url, options, successCallback) {
       throw new Error("Something went wrong");
     })
     .then(responseJSON => successCallback(responseJSON))
-    .catch(err => console.log("error"));
+    .catch(err => alert("Please make a valid selection"));
 
 }
 
