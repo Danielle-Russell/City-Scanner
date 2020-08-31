@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
   <meta charset="utf-8">
@@ -17,18 +17,17 @@
   <section id="home-container">
 
     <fieldset>
-
+      
       <div id="home1>">
         <h1 class="landing">Discover key demographics and statistics in your area. </h1>
       </div>
       <!-- Form that hosts all state names and FIPS -->
       <div id="forms">
         <form id="states">
-          <h1> Select your State</h1>
 
           <select id="selectState">
-
-            <option disabled>Select State</option>
+            <label for="selectState">Select Your State</label>
+            <option value="">Select State</option>
             <option name="AL" value="01">AL</option>
             <option name="AK" value="02">AK</option>
             <option name="AZ" value="04">AZ</option>
@@ -87,9 +86,9 @@
         </form>
         <!-- Dynamic form for city names -->
         <form id="selectForm" class="hide">
-          <h1>Select Your City</h1>
           <select id="select">
-            <option disabled>Select City</option>
+            <label for="select">Select City</label>
+            <option value="">Select City</option>
           </select>
           <button id="button" type="submit">Submit</button>
         </form>

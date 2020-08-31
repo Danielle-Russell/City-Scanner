@@ -3,6 +3,7 @@ form {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding: 15px;
 }
 fieldset {
   background-color: #f5f5f5;
@@ -127,6 +128,9 @@ border-radius: 50px;
   flex: 2;
 }
 
+ul {
+  text-align: left;
+}
 /* Buttons */
 
 button {
@@ -138,12 +142,7 @@ button {
   font-family: 'Courier New', Courier, monospace;
   font-weight: bold;
   font-size: 15px;
-}
-
-
-p {
-  font-family: 'Times New Roman', Times, serif;
-  font-size: 20px;
+  color: #f5f5f5;
 }
 
 footer {
@@ -203,7 +202,6 @@ li {
   display: inline;
  float: left;
   text-align: center;
-  /*padding: 14px 16px;*/
   text-decoration: none;
   list-style: none;
 }
@@ -247,9 +245,10 @@ a:visited {
   padding-bottom: 350px;
 }
  fieldset {
-   
+   border-style: none;
    background-color: transparent;
    padding-top: 150px;
+   opacity: 1;
  }
 
 }

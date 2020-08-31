@@ -9,9 +9,10 @@ function fetchRequest(url, options, successCallback) {
       throw new Error("Something went wrong");
     })
     .then(responseJSON => successCallback(responseJSON))
-    .catch(err => alert("Please make a valid selection"));
+    .catch(err => console.log("error"));
 
 }
+
 
 
 //fetch url for covid data
@@ -309,6 +310,13 @@ function watchForm() {
 
     let stateInput = $("#selectState option:selected").text()
 
+    if (input === "") {
+      alert("Please make a valid selection")
+      $('#selectForm').hide()
+    } else {
+      $('#selectForm').show()
+    }
+
     $(".empty").empty();
 
 
@@ -345,6 +353,7 @@ function callFetch(input, stateInput) {
 function watchSubmit(responseJson) {
   $('#selectForm').on('submit', event => {
     event.preventDefault();
+
     handleResponse(responseJson);
     $("#results-container").removeClass("hide");
     $("#selectForm").addClass('hide')
