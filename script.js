@@ -3,6 +3,7 @@ function fetchRequest(url, options, successCallback) {
   fetch(url, options)
     .then(response => {
       if (response.ok) {
+        ;
         return response.json();
       }
 
@@ -13,12 +14,10 @@ function fetchRequest(url, options, successCallback) {
 
 }
 
-
-
 //fetch url for covid data
 function covidURL(stateInput) {
 
-  return `https://api.covidtracking.com/v1/states/${stateInput}/current.json`
+  return `https://api.covidtracking.com/v1/states/${stateInput}/current.json`;
 
 }
 
@@ -29,9 +28,9 @@ let covidOptions = {
 }
 
 function displayCovid(responseJson) {
-  console.log(responseJson)
 
   new Chart(document.getElementById("covidChart"), {
+
     type: 'horizontalBar',
     data: {
       labels: ["Positive Cases", "Number Hospitalized", "Number of Deaths"],
@@ -58,16 +57,14 @@ function displayCovid(responseJson) {
 //URL for fetch request, for state FBI data
 function fbiURL(stateInput) {
 
-  return `https://api.usa.gov/crime/fbi/sapi/api/summarized/estimates/states/${stateInput}/2018/2018?API_KEY=iiHnOKfno2Mgkt5AynpvPpUQTEyxE77jo1RU8PIv
-`
+  return `https://api.usa.gov/crime/fbi/sapi/api/summarized/estimates/states/${stateInput}/2018/2018?API_KEY=iiHnOKfno2Mgkt5AynpvPpUQTEyxE77jo1RU8PIv`;
 
 }
 
 //URL for fetch request, for national FBI data
 function fbiNationalURL(stateInput) {
 
-  return `https://api.usa.gov/crime/fbi/sapi/api/summarized/estimates/national/2018/2018?API_KEY=iiHnOKfno2Mgkt5AynpvPpUQTEyxE77jo1RU8PIv
-`
+  return `https://api.usa.gov/crime/fbi/sapi/api/summarized/estimates/national/2018/2018?API_KEY=iiHnOKfno2Mgkt5AynpvPpUQTEyxE77jo1RU8PIv`;
 
 }
 
@@ -79,7 +76,9 @@ let fbiOptions = {
 
 //Constructs pie chart
 function displayGraph(responseJson) {
+
   $('#selectForm').on('submit', event => {
+
     event.preventDefault();
 
     var canvas = document.getElementById("pieChart");
@@ -132,23 +131,29 @@ function displayGraph(responseJson) {
       data: data,
       options: options
     });
+    //Delete chart on resubmission
+    if (canvas) {
+      canvas.destroy();
+    }
   });
 }
 
 //Constructs second pie chart
 function displayFBI(responseJson) {
+
   $('#selectForm').on('submit', event => {
+
     event.preventDefault();
 
     var canvas = document.getElementById("secondPieChart");
 
     var ctx = canvas.getContext('2d');
 
-    let crimes = responseJson.results[0]
+    let crimes = responseJson.results[0];
 
-    let violentCrime = crimes.violent_crime + crimes.rape_revised + crimes.aggravated_assault
+    let violentCrime = crimes.violent_crime + crimes.rape_revised + crimes.aggravated_assault;
 
-    let percent = violentCrime + crimes.homicide + crimes.robbery + crimes.property_crime + crimes.burglary + crimes.larceny + crimes.motor_vehicle_theft + crimes.arson
+    let percent = violentCrime + crimes.homicide + crimes.robbery + crimes.property_crime + crimes.burglary + crimes.larceny + crimes.motor_vehicle_theft + crimes.arson;
 
     var data = {
       labels: ["Homicide", "Violent Crimes", "Robbery", "Property Crime", "Burglary", "Larceny", "Motor Vehicle Theft", "Arson"],
@@ -201,7 +206,7 @@ function censusURL(input) {
 
   let params = `NAME,S1901_C01_013E,S2301_C04_001E,S1401_C04_007E,S1401_C06_007E,S1501_C02_005E,S0101_C01_032E,S0101_C01_033E,S2506_C01_009E,S2507_C01_058E,S2503_C05_024E,S0101_C01_001E`;
 
-  return `https://api.census.gov/data/2018/acs/acs1/subject?get=${params}&for=place:*&in=state:${input}&key=4877574e295661a3792cd99bcb3d358bbffaf039`
+  return `https://api.census.gov/data/2018/acs/acs1/subject?get=${params}&for=place:*&in=state:${input}&key=4877574e295661a3792cd99bcb3d358bbffaf039`;
 }
 
 //All census headers
@@ -216,7 +221,7 @@ function censusStateURL(input) {
 
   let params = `NAME,S1901_C01_013E,S2301_C04_001E,S1401_C04_007E,S1401_C06_007E,S1501_C02_005E,S0101_C01_032E,S0101_C01_033E,S2506_C01_009E,S2507_C01_058E,S2503_C05_024E,S0101_C01_001E`;
 
-  return `https://api.census.gov/data/2018/acs/acs1/subject?get=${params}&for=state:${input}&key=4877574e295661a3792cd99bcb3d358bbffaf039`
+  return `https://api.census.gov/data/2018/acs/acs1/subject?get=${params}&for=state:${input}&key=4877574e295661a3792cd99bcb3d358bbffaf039`;
 }
 
 //URL for fetch, for national census data 
@@ -224,35 +229,32 @@ function censusNationURL(input) {
 
   let params = `NAME,S1901_C01_013E,S2301_C04_001E,S1401_C04_007E,S1401_C06_007E,S1501_C02_005E,S0101_C01_032E,S0101_C01_033E,S2506_C01_009E,S2507_C01_058E,S2503_C05_024E,S0101_C01_001E`;
 
-  return `https://api.census.gov/data/2018/acs/acs1/subject?get=${params}&for=us:1&key=4877574e295661a3792cd99bcb3d358bbffaf039`
+  return `https://api.census.gov/data/2018/acs/acs1/subject?get=${params}&for=us:1&key=4877574e295661a3792cd99bcb3d358bbffaf039`;
 }
 
 //Display crime stats
 function displayCensus(responseJson) {
 
-  console.log(responseJson)
   //ensure city select is empty before submitting
   $("#select").empty();
 
-  populateSelect(responseJson)
+  populateSelect(responseJson);
 
 
 }
 function displayFBIResults(responseJson) {
 
-  console.log(responseJson)
-
-  displayGraph(responseJson)
+  displayGraph(responseJson);
 
 }
 
 function displayNational(responseJson) {
-  console.log(responseJson)
-  populateNation(responseJson)
+
+  populateNation(responseJson);
 }
 //Populates every result div with census info on national averages
 function populateNation(responseJson) {
-  let separator = parseFloat(responseJson[1][1]).toLocaleString('en')
+  let separator = parseFloat(responseJson[1][1]).toLocaleString('en');
   let secondSeparator = parseFloat(responseJson[1][8]).toLocaleString('en');
   let thirdSeparator = parseFloat(responseJson[1][10]).toLocaleString('en');
   let fourthSeparator = parseFloat(responseJson[1][9]).toLocaleString('en');
@@ -260,37 +262,34 @@ function populateNation(responseJson) {
 
   let string = "<h3> Compare to the National Average: ";
 
-  console.log(responseJson)
-
-  $(".item1 ol").append(`</h3>${string}${responseJson[1][3]}%`)
-  $(".item2 ol").append(`</h3>${string}${responseJson[1][4]}%`)
-  $(".item3 ol").append(`</h3>${string}${responseJson[1][5]}%`)
-  $(".item4 ol").append(`</h3>${string}$${separator}`)
-  $(".item5 ol").append(`</h3>${string}${responseJson[1][2]}%`)
-  $(".demo1 ol").append(`</h3>${string}${responseJson[1][6]} years`)
-  $(".demo2 ol").append(`</h3>${string}${responseJson[1][7]} Males : 100 Females`)
-  $(".demo3 ol").append(`</h3>${string}${fifthSeparator}`)
-  $(".house1 ol").append(`</h3>${string}$${secondSeparator}`)
-  $(".house2 ol").append(`</h3>${string}$${thirdSeparator}`)
-  $(".house3 ol").append(`</h3>${string}$${fourthSeparator}`)
+  $(".item1 ol").append(`</h3>${string}${responseJson[1][3]}%`);
+  $(".item2 ol").append(`</h3>${string}${responseJson[1][4]}%`);
+  $(".item3 ol").append(`</h3>${string}${responseJson[1][5]}%`);
+  $(".item4 ol").append(`</h3>${string}$${separator}`);
+  $(".item5 ol").append(`</h3>${string}${responseJson[1][2]}%`);
+  $(".demo1 ol").append(`</h3>${string}${responseJson[1][6]} years`);
+  $(".demo2 ol").append(`</h3>${string}${responseJson[1][7]} Males : 100 Females`);
+  $(".demo3 ol").append(`</h3>${string}${fifthSeparator}`);
+  $(".house1 ol").append(`</h3>${string}$${secondSeparator}`);
+  $(".house2 ol").append(`</h3>${string}$${thirdSeparator}`);
+  $(".house3 ol").append(`</h3>${string}$${fourthSeparator}`);
 }
-
-$('#landing-btn').submit(function (event) {
-  event.preventDefault();
-  $('#container').removeClass('hide')
-})
-
-
 
 //Populates dropdown menu with cities based on state selection
 function populateSelect(responseJson) {
   //Removes the title array in the response, so "NAME" is not populated in dropdown menu
-  responseJson.shift(responseJson[0])
+  responseJson.shift(responseJson[0]);
   //Alphabetizes menu
-  responseJson.sort()
+  responseJson.sort();
+
   for (let i = 0; i < responseJson.length; i++) {
-    $('#select').append($('<option></option>').val(responseJson[i]).text(responseJson[i][0]))
+
+    $('#select').append(
+
+      $('<option></option>').val(responseJson[i]).text(responseJson[i][0]));
   }
+
+  $("#selectForm").removeClass('hide');
 }
 
 
@@ -303,91 +302,127 @@ function watchForm() {
 
     //Defines input as the value of the state selection
 
-    let input = $("#selectState option:selected").val()
+    let input = $("#selectState option:selected").val();
 
     //Defines state input as the label value of the state selection
 
 
-    let stateInput = $("#selectState option:selected").text()
-
+    let stateInput = $("#selectState option:selected").text();
+    //if user makes no selection
     if (input === "") {
-      alert("Please make a valid selection")
-      $('#selectForm').hide()
+
+      alert("Please make a valid selection");
+
+      $('#selectForm').hide();
+
     } else {
-      $('#selectForm').show()
+
+      $('#selectForm').show();
+
     }
 
     $(".empty").empty();
 
-
     //Calls on functions 
-    callFetch(input, stateInput)
+    callFetch(input, stateInput);
 
-    $("#selectForm").removeClass('hide')
-
+    $("#results-container").addClass('hide');
 
   })
-
 }
 
 
 //Initializes fetch request for every API
 function callFetch(input, stateInput) {
 
-  fetchRequest(censusURL(input), censusOptions, displayCensus)
+  fetchRequest(censusURL(input), censusOptions, displayCensus);
 
-  fetchRequest(fbiURL(stateInput), fbiOptions, displayFBIResults)
+  fetchRequest(fbiURL(stateInput), fbiOptions, displayFBIResults);
 
-  fetchRequest(censusStateURL(input), censusOptions, displayState)
+  fetchRequest(censusStateURL(input), censusOptions, displayState);
 
-  fetchRequest(censusNationURL(input), censusOptions, displayNational)
+  fetchRequest(censusNationURL(input), censusOptions, displayNational);
 
-  fetchRequest(fbiNationalURL(stateInput), fbiOptions, displayFBI)
+  fetchRequest(fbiNationalURL(stateInput), fbiOptions, displayFBI);
 
-  fetchRequest(covidURL(stateInput), covidOptions, displayCovid)
+  fetchRequest(covidURL(stateInput), covidOptions, displayCovid);
 
 
 }
 
 //Event listener form for city selection submit button
 function watchSubmit(responseJson) {
+
   $('#selectForm').on('submit', event => {
+
     event.preventDefault();
 
     handleResponse(responseJson);
+
     $("#results-container").removeClass("hide");
-    $("#selectForm").addClass('hide')
-    window.scroll({
-      top: 740,
-      behavior: 'smooth'
-    });
+
+    $("#selectForm").addClass('hide');
+
+
+    let limiter = 768;
+    //Adjusts scroll depending on device width
+    if ($(window).width() >= limiter) {
+
+      window.scroll({
+        top: 900,
+        behavior: 'smooth'
+      });
+
+    } else {
+
+      window.scroll({
+        top: 450,
+        behavior: 'smooth'
+      });
+    }
   })
 }
 
 //
 function handleResponse(responseJson) {
+
   let city = ''
+
   $.each($("#selectForm option:selected"), function () {
-    city = $(this).val().split(',')
+
+    city = $(this).val().split(',');
   })
-  populateEducation(city)
+  populateEducation(city);
 }
 
+//Populates education div with census info
 function populateEducation(city) {
-  console.log(city)
-  //Populates education div with census info
-  let separator = parseFloat(city[2]).toLocaleString('en')
+
+  //formats number
+  let separator = parseFloat(city[2]).toLocaleString('en');
+
   $('.item1 ul').append(`
-<h2>${city[4]}% of people were enrolled in a public high school</h2>
+
+<h2>${city[4]}% of students were enrolled in a public high school</h2>
+
    `)
 
-  $(".item2 ul").append(`<h2>${city[5]}% of people were enrolled in a private high school</h2>`)
+  $(".item2 ul").append(`
+
+  <h2>${city[5]}% of students were enrolled in a private high school</h2>
+  
+  `)
 
   $('.item3 ul').append(`
-  <h2>${city[6]}% of people have a Bachelors degree, or higher</h2>`)
+
+  <h2>${city[6]}% of people (24yrs+) have a Bachelors degree, or higher</h2>
+  
+  `)
 
   $('.item4 ul').append(`
-   <h2>The Mean Family Income is $${separator}</h2>
+
+   <h2>The Mean Family Income: $${separator}</h2>
+
   `)
 
   //Turns unemployment rate string into float, so negative number glitches can be identified and taken out (replaced)
@@ -396,19 +431,26 @@ function populateEducation(city) {
 
   if (response < 0) {
 
-    $(".item5 ul").append(`<h2 style="font-style: italic">Sorry, we couldn't find this information for you.</h2>`)
+    $(".item5 ul").append(`
+    <h2 style="font-style: italic">Sorry, this information is unavailable.</h2>
+    `)
 
   } else if (response >= 0) {
 
-    $(".item5 ul").append(`<h2>The Unemployment Rate (16yrs+) is: ${response}%</h2>`)
+    $(".item5 ul").append(`
+    
+    <h2>The Unemployment Rate (16yrs+): ${response}%</h2>
+    
+    `)
   }
 
-  populateDemo(city)
+  populateDemo(city);
 }
 
 function displayState(responseJson) {
-  console.log(responseJson)
-  stateAverage(responseJson)
+
+  stateAverage(responseJson);
+
 }
 
 //Populates every result div with census info on all states
@@ -421,28 +463,27 @@ function stateAverage(responseJson) {
 
   let string = "<h3>Compare to the state average: ";
 
-  console.log(responseJson)
-  $('#heading').append(`COVID-19 in ${responseJson[1][0]}`)
-  $(".item1 ol").append(`</h3>${string}${responseJson[1][3]}%`)
-  $(".item2 ol").append(`</h3>${string}${responseJson[1][4]}%`)
-  $(".item3 ol").append(`</h3>${string}${responseJson[1][5]}%`)
-  $(".item4 ol").append(`</h3>${string}$${separator}`)
-  $(".item5 ol").append(`</h3>${string}${responseJson[1][2]}%`)
-  $(".demo1 ol").append(`</h3>${string}${responseJson[1][6]} years`)
-  $(".demo2 ol").append(`</h3>${string}${responseJson[1][7]} Males : 100 Females`)
-  $(".demo3 ol").append(`</h3>${string}${fifthSeparator}`)
-  $(".house1 ol").append(`</h3>${string}$${secondSeparator}`)
-  $(".house2 ol").append(`</h3>${string}$${thirdSeparator}`)
-  $(".house3 ol").append(`</h3>${string}$${fourthSeparator}`)
+  $('#heading').append(`COVID-19 in ${responseJson[1][0]}`);
+  $(".item1 ol").append(`</h3>${string}${responseJson[1][3]}%`);
+  $(".item2 ol").append(`</h3>${string}${responseJson[1][4]}%`);
+  $(".item3 ol").append(`</h3>${string}${responseJson[1][5]}%`);
+  $(".item4 ol").append(`</h3>${string}$${separator}`);
+  $(".item5 ol").append(`</h3>${string}${responseJson[1][2]}%`);
+  $(".demo1 ol").append(`</h3>${string}${responseJson[1][6]} years`);
+  $(".demo2 ol").append(`</h3>${string}${responseJson[1][7]} Males : 100 Females`);
+  $(".demo3 ol").append(`</h3>${string}${fifthSeparator}`);
+  $(".house1 ol").append(`</h3>${string}$${secondSeparator}`);
+  $(".house2 ol").append(`</h3>${string}$${thirdSeparator}`);
+  $(".house3 ol").append(`</h3>${string}$${fourthSeparator}`);
 }
 
 //Populates demographics div with census info
 function populateDemo(city) {
 
-  let population = parseFloat(city[12]).toLocaleString('en')
+  let population = parseFloat(city[12]).toLocaleString('en');
 
   $('.demo1 ul').append(`
-    <h2>The Median Age is: ${city[7]} years</h2>
+    <h2>The Median Age: ${city[7]} years</h2>
     `)
 
   $('.demo2 ul').append(`
@@ -450,31 +491,32 @@ function populateDemo(city) {
     `)
 
   $('.demo3 ul').append(`
-    <h2>The current population is: ${population}</h2>
+    <h2>The Current Population: ${population}</h2>
     `)
 
-  populateHousing(city)
+  populateHousing(city);
 }
 
 //Populates housing div with census info
 function populateHousing(city) {
-  let separator = parseFloat(city[9]).toLocaleString('en')
-  let secondSeparator = parseFloat(city[10]).toLocaleString('en')
-  let thirdSeparator = parseFloat(city[11]).toLocaleString('en')
-  $('#education').append(`Education in ${city[0]}`)
-  $('#employ').append(`Income and Employment in ${city[0]}`)
-  $('#demos').append(`Demographics in ${city[0]}`)
-  $('#house').append(`Housing in ${city[0]}`)
+  let separator = parseFloat(city[9]).toLocaleString('en');
+  let secondSeparator = parseFloat(city[10]).toLocaleString('en');
+  let thirdSeparator = parseFloat(city[11]).toLocaleString('en');
+  $('#education').append(`Education in ${city[0]}`);
+  $('#employ').append(`Income and Employment in ${city[0]}`);
+  $('#demos').append(`Demographics in ${city[0]}`);
+  $('#house').append(`Housing in ${city[0]}`);
+
   $('.house1 ul').append(
     `
-    <h2>The median house price is: $${separator}</h2>`)
+    <h2>The Median House Price: $${separator}</h2>`)
 
   $('.house2 ul').append(
     `
-    <h2>Average monthly rental cost: $${thirdSeparator}</h2>
+    <h2>The Average Monthly Rental Cost: $${thirdSeparator}</h2>
     `)
   $('.house3 ul').append(
-    `<h2> The median real estate tax is: $${secondSeparator} anually</h2>
+    `<h2> The Median Real Estate Tax: $${secondSeparator} anually</h2>
     `
   )
 }

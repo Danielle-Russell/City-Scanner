@@ -1,6 +1,9 @@
 /* Mobile First */
-body {
-  height: 95vh;
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
 }
 form {
   display: flex;
@@ -9,8 +12,9 @@ form {
   padding: 15px;
 }
 fieldset {
-  background-color: #f5f5f5;
-  opacity: 0.9;
+  background: rgba(0, 0, 0, 0.7);
+  margin: 50px;
+  color: white;
 }
 select {
 	display: flex;
@@ -32,9 +36,11 @@ header {
   background-color:  #0077B6;
   color: white;
   font-family: 'Courier New', Courier, monospace;
-  padding: 20px;
   text-align: center;
   font-weight: 600;
+  overflow: hidden;
+  height: 5vh;
+  padding-top: 5px;
 }
 
 #navs {
@@ -56,13 +62,14 @@ form > h1 {
 
 /* Containers */
 #home-container {
-  background-image: url("https://images.squarespace-cdn.com/content/v1/5a70bcb1cf81e0e8a4d5ef65/1518459048194-14W5FQC440H4LNFLO4KL/ke17ZwdGBToddI8pDm48kGPJwLLCszQMOXCKRip_r7oUqsxRUqqbr1mOJYKfIPR7LoDQ9mXPOjoJoqy81S2I8N_N4V1vUb5AoIIIbLZhVYy7Mythp_T-mtop-vrsUOmeInPi9iDjx9w8K4ZfjXt2dowi5eAYwTDwW82Y64htB_ttK_NvGRcf0bq7G9FlT6SEJvwGh1qtNWvMhYKnvaKhbA/Pittsburgh+Skyline.jpg?format=1500w");
-  repeat: no-repeat;
+  background-image: url("https://wallpapercave.com/wp/wp3608153.jpg");
   background-size: cover;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 82vh;
+  overflow: hidden;
+  height: 90vh;
+  opacity: 0.8;
 }
 
 #crime-container {
@@ -92,12 +99,12 @@ text-align: center;
 
 #heading, #crime-heading {
   text-align: center;
-   padding-top: 50px;
+   padding-top: 100px;
 }
 
 h2 {
   font-size: 25px;
-  text-align: center;
+  text-align: left;
   font-weight: 400;
 }
 
@@ -126,7 +133,6 @@ font-family: 'Times New Roman';
 border-radius: 50px;
 }
 
-
 .crimeItem, .crimeItem2 {
   flex: 2;
 }
@@ -139,7 +145,7 @@ ul {
 button {
   text-align: center;
   display: flex;
-  background-color:  #0077B6;
+  background-color: #0077B6;
   padding: 15px;
   border-radius: 5px;
   font-family: 'Courier New', Courier, monospace;
@@ -152,9 +158,11 @@ footer {
   color: white;
   text-align: center;
   background-color:  #0077B6;
+  overflow: hidden;
+  height: auto;
 }
 
-@media only screen and (min-width: 800px)  {
+@media only screen and (min-width: 768px)  {
   button:hover {
     transform: scale(1.1);
   }
@@ -180,7 +188,7 @@ li {
 
   
 #results-container {
-  margin: 150px;
+  margin: 100px;
   padding-bottom: 100px;
 }
 
@@ -199,12 +207,11 @@ li {
   top: 0; 
   justify-content: center;
   width: 100%; 
+  padding: 10px;
 }
 
 #navs ul {
   display: inline;
- float: left;
-  text-align: center;
   text-decoration: none;
   list-style: none;
 }
@@ -241,17 +248,21 @@ a:visited {
   padding-right: 50px;
 }
 
+fieldset {
+  display: block;
+  width: 70%;
+  height: 30%;
+  margin: auto;
+}
 
 #selectForm {
   padding-left: 50px;
   padding-right: 50px;
   padding-bottom: 350px;
 }
- fieldset {
-   border-style: none;
-   background-color: transparent;
-   padding-top: 150px;
-   opacity: 1;
- }
 
+ footer {
+  padding: 10px;
+  height: auto;
+ }
 }

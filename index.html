@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>City scanner</title>
   <link href="style.css" rel="stylesheet" type="text/css" />
 
@@ -17,7 +17,7 @@
   <section id="home-container">
 
     <fieldset>
-      
+
       <div id="home1>">
         <h1 class="landing">Discover key demographics and statistics in your area. </h1>
       </div>
@@ -86,9 +86,8 @@
         </form>
         <!-- Dynamic form for city names -->
         <form id="selectForm" class="hide">
-          <select id="select">
+          <select id="select" required>
             <label for="select">Select City</label>
-            <option value="">Select City</option>
           </select>
           <button id="button" type="submit">Submit</button>
         </form>
@@ -143,13 +142,13 @@
 
       <div class="crimeItem" class="empty">
 
-        <canvas id="pieChart"></canvas>
+        <canvas id="pieChart" class="empty"></canvas>
 
       </div>
 
       <div class="crimeItem2" class="empty">
 
-        <canvas id="secondPieChart"></canvas>
+        <canvas id="secondPieChart" class="empty"></canvas>
 
 
       </div>
@@ -254,8 +253,7 @@
   </div>
 
   <footer>
-    *All information is retrieved from the 2018 American Community Survey from offical Census, and crime data from the
-    Federal Bureau of Investigation.
+    *Official Data from the 2018 American Community Survey with the Census
   </footer>
 
 
