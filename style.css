@@ -148,13 +148,12 @@ button {
   position: relative;
   text-align: center;
   display: flex;
-  background-color: #0077B6;
   padding: 15px;
+  background-color: #CAF0F8;
   border-radius: 5px;
   font-family: 'Courier New', Courier, monospace;
   font-weight: bold;
-  font-size: 15px;
-  color: #f5f5f5;
+  font-size: 18px;
 }
 
 footer {
