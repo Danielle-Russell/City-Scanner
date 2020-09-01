@@ -81,109 +81,109 @@ function displayGraph(responseJson) {
     myPie.destroy();
   })
 
-    var canvas = document.getElementById("pieChart");
+  var canvas = document.getElementById("pieChart");
 
-    var ctx = canvas.getContext('2d');
+  var ctx = canvas.getContext('2d');
 
-    let crimes = responseJson.results[0]
+  let crimes = responseJson.results[0]
 
-    let violentCrime = crimes.violent_crime + crimes.rape_revised + crimes.aggravated_assault
+  let violentCrime = crimes.violent_crime + crimes.rape_revised + crimes.aggravated_assault
 
-    let percent = violentCrime + crimes.homicide + crimes.robbery + crimes.property_crime + crimes.burglary + crimes.larceny + crimes.motor_vehicle_theft + crimes.arson
+  let percent = violentCrime + crimes.homicide + crimes.robbery + crimes.property_crime + crimes.burglary + crimes.larceny + crimes.motor_vehicle_theft + crimes.arson
 
-    var data = {
-      labels: ["Homicide", "Violent Crimes", "Robbery", "Property Crime", "Burglary", "Larceny", "Motor Vehicle Theft", "Arson"],
-      datasets: [
-        {
-          fill: true,
-          backgroundColor: [
-            '#52D726',
-            '#FFEC00',
-            '#FF7300',
-            '#FF0000',
-            '#007ED6',
-            'orange',
-            '#5E548E',
-            '#3F88C5'
-          ],
-          data: [crimes.homicide, violentCrime, crimes.robbery, crimes.property_crime, crimes.burglary, crimes.larceny, crimes.motor_vehicle_theft, crimes.arson],
+  var data = {
+    labels: ["Homicide", "Violent Crimes", "Robbery", "Property Crime", "Burglary", "Larceny", "Motor Vehicle Theft", "Arson"],
+    datasets: [
+      {
+        fill: true,
+        backgroundColor: [
+          '#52D726',
+          '#FFEC00',
+          '#FF7300',
+          '#FF0000',
+          '#007ED6',
+          'orange',
+          '#5E548E',
+          '#3F88C5'
+        ],
+        data: [crimes.homicide, violentCrime, crimes.robbery, crimes.property_crime, crimes.burglary, crimes.larceny, crimes.motor_vehicle_theft, crimes.arson],
 
-          borderColor: ['white'],
-          borderWidth: [2, 2]
-        }
-      ]
-    };
+        borderColor: ['white'],
+        borderWidth: [2, 2]
+      }
+    ]
+  };
 
 
-    var options = {
-      title: {
-        display: true,
-        text: `State Crime Rate: ${(percent / (crimes.population) * 100).toFixed(2)}%`,
-        position: 'bottom'
-      },
-      rotation: -0.7 * Math.PI
-    };
-    
-   var myPie = new Chart(ctx, {
-      type: 'pie',
-      data: data,
-      options: options
-    });
+  var options = {
+    title: {
+      display: true,
+      text: `State Crime Rate: ${(percent / (crimes.population) * 100).toFixed(2)}%`,
+      position: 'bottom'
+    },
+    rotation: -0.7 * Math.PI
+  };
+
+  var myPie = new Chart(ctx, {
+    type: 'pie',
+    data: data,
+    options: options
+  });
 }
 
 //Constructs second pie chart
 function displayFBI(responseJson) {
 
-    var canvas = document.getElementById("secondPieChart");
+  var canvas = document.getElementById("secondPieChart");
 
-    var ctx = canvas.getContext('2d');
+  var ctx = canvas.getContext('2d');
 
-    let crimes = responseJson.results[0];
+  let crimes = responseJson.results[0];
 
-    let violentCrime = crimes.violent_crime + crimes.rape_revised + crimes.aggravated_assault;
+  let violentCrime = crimes.violent_crime + crimes.rape_revised + crimes.aggravated_assault;
 
-    let percent = violentCrime + crimes.homicide + crimes.robbery + crimes.property_crime + crimes.burglary + crimes.larceny + crimes.motor_vehicle_theft + crimes.arson;
+  let percent = violentCrime + crimes.homicide + crimes.robbery + crimes.property_crime + crimes.burglary + crimes.larceny + crimes.motor_vehicle_theft + crimes.arson;
 
-    var data = {
-      labels: ["Homicide", "Violent Crimes", "Robbery", "Property Crime", "Burglary", "Larceny", "Motor Vehicle Theft", "Arson"],
-      datasets: [
-        {
-          fill: true,
-          backgroundColor: [
-            '#52D726',
-            '#FFEC00',
-            '#FF7300',
-            '#FF0000',
-            '#007ED6',
-            'orange',
-            '#5E548E',
-            '#3F88C5'
-          ],
-          data: [crimes.homicide, violentCrime, crimes.robbery, crimes.property_crime, crimes.burglary, crimes.larceny, crimes.motor_vehicle_theft, crimes.arson],
+  var data = {
+    labels: ["Homicide", "Violent Crimes", "Robbery", "Property Crime", "Burglary", "Larceny", "Motor Vehicle Theft", "Arson"],
+    datasets: [
+      {
+        fill: true,
+        backgroundColor: [
+          '#52D726',
+          '#FFEC00',
+          '#FF7300',
+          '#FF0000',
+          '#007ED6',
+          'orange',
+          '#5E548E',
+          '#3F88C5'
+        ],
+        data: [crimes.homicide, violentCrime, crimes.robbery, crimes.property_crime, crimes.burglary, crimes.larceny, crimes.motor_vehicle_theft, crimes.arson],
 
-          borderColor: ['white'],
-          borderWidth: [2, 2]
-        }
-      ]
-    };
-
-
-    var options = {
-      title: {
-        display: true,
-        text: `National Crime Rate: ${(percent / (crimes.population) * 100).toFixed(2)}%`,
-        position: 'bottom'
-      },
-      rotation: -0.7 * Math.PI
-    };
+        borderColor: ['white'],
+        borderWidth: [2, 2]
+      }
+    ]
+  };
 
 
+  var options = {
+    title: {
+      display: true,
+      text: `National Crime Rate: ${(percent / (crimes.population) * 100).toFixed(2)}%`,
+      position: 'bottom'
+    },
+    rotation: -0.7 * Math.PI
+  };
 
-    var pie = new Chart(ctx, {
-      type: 'pie',
-      data: data,
-      options: options
-    });
+
+
+  var pie = new Chart(ctx, {
+    type: 'pie',
+    data: data,
+    options: options
+  });
 }
 
 //Census variables 
@@ -227,7 +227,7 @@ function displayCensus(responseJson) {
   $("#select").empty();
 
   populateSelect(responseJson);
-  
+
 
 }
 function displayFBIResults(responseJson) {
