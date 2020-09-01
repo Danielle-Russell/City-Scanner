@@ -18,6 +18,7 @@ fieldset {
   color: white;
 }
 select {
+  background-color: white;
 	display: flex;
   padding: 10px;
 	font-size: 16px;
@@ -27,8 +28,8 @@ select {
 	box-sizing: border-box;
 	margin: 0;
 	border-radius: 5px;
-   margin-bottom: 50px;
-   -moz-appearance: none;
+  margin-bottom: 50px;
+  -moz-appearance: none;
 	-webkit-appearance: none;
   appearance: none;
 }  

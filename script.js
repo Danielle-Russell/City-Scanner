@@ -77,7 +77,7 @@ let fbiOptions = {
 //Constructs pie chart
 function displayGraph(responseJson) {
 
-  $("#submit").click(function () {
+  $("#submit").on('click', function () {
     myPie.destroy();
   })
 
@@ -303,7 +303,11 @@ function watchForm() {
 
       alert("Please make a valid selection");
 
+      $('#submit').text("Submit");
+
       $('#selectForm').hide();
+    } else {
+      $('#selectForm').show();
     }
 
     $(".empty").empty();
