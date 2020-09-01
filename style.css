@@ -10,6 +10,7 @@ form {
   flex-direction: column;
   justify-content: center;
   padding: 15px;
+  opacity: 1;
 }
 fieldset {
   background: rgba(0, 0, 0, 0.7);
@@ -69,8 +70,9 @@ form > h1 {
   justify-content: center;
   overflow: hidden;
   height: 90vh;
-  opacity: 0.8;
+  opacity: 0.9;
 }
+
 
 #crime-container {
   display: flex;
@@ -143,6 +145,7 @@ ul {
 /* Buttons */
 
 button {
+  position: relative;
   text-align: center;
   display: flex;
   background-color: #0077B6;
