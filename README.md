@@ -1,6 +1,10 @@
 # City-Scanner
-Link to live app: https://daniellerussell-beep.github.io/City-Scanner/
-Link to GitHub Repository: https://github.com/DanielleRussell-beep/City-Scanner.git
+<ul>
+  
+  <li>Link to live app: https://daniellerussell-beep.github.io/City-Scanner/</li>
+  <li>Link to GitHub Repository: https://github.com/DanielleRussell-beep/City-Scanner.git</li>
+  
+  </ul>
 
 <h2> Landing Page </h2>
 
@@ -25,9 +29,9 @@ Link to GitHub Repository: https://github.com/DanielleRussell-beep/City-Scanner.
 City Scanner allows users to find a U.S. state and city, and discover statistics within that area.
 
 <h3>Technologies Used</h3>
-
--HTML
--CSS
--Javascript
--jQuery
--Chart.js
+<ul>
+  <li>HTML</li>
+  <li>CSS</li>
+  <li>Javascript</li>
+  <li>jQuery</li>
+  <li>Chart.js</li>
