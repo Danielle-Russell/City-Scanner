@@ -77,9 +77,9 @@ let fbiOptions = {
 //Constructs pie chart
 function displayGraph(responseJson) {
 
-  $('#selectForm').on('submit', event => {
-
-    event.preventDefault();
+  $("#submit").click(function () {
+    myPie.destroy();
+  })
 
     var canvas = document.getElementById("pieChart");
 
@@ -123,27 +123,16 @@ function displayGraph(responseJson) {
       },
       rotation: -0.7 * Math.PI
     };
-
-
-
-    var myPie = new Chart(ctx, {
+    
+   var myPie = new Chart(ctx, {
       type: 'pie',
       data: data,
       options: options
     });
-    //Delete chart on resubmission
-    if (canvas) {
-      canvas.destroy();
-    }
-  });
 }
 
 //Constructs second pie chart
 function displayFBI(responseJson) {
-
-  $('#selectForm').on('submit', event => {
-
-    event.preventDefault();
 
     var canvas = document.getElementById("secondPieChart");
 
@@ -190,12 +179,11 @@ function displayFBI(responseJson) {
 
 
 
-    var myPie = new Chart(ctx, {
+    var pie = new Chart(ctx, {
       type: 'pie',
       data: data,
       options: options
     });
-  })
 }
 
 //Census variables 
@@ -239,7 +227,7 @@ function displayCensus(responseJson) {
   $("#select").empty();
 
   populateSelect(responseJson);
-
+  
 
 }
 function displayFBIResults(responseJson) {
@@ -290,6 +278,7 @@ function populateSelect(responseJson) {
   }
 
   $("#selectForm").removeClass('hide');
+  $('#submit').text("Submit")
 }
 
 
@@ -300,6 +289,7 @@ function watchForm() {
 
     event.preventDefault();
 
+    $('#submit').text("Please wait...")
     //Defines input as the value of the state selection
 
     let input = $("#selectState option:selected").val();
@@ -314,11 +304,6 @@ function watchForm() {
       alert("Please make a valid selection");
 
       $('#selectForm').hide();
-
-    } else {
-
-      $('#selectForm').show();
-
     }
 
     $(".empty").empty();
@@ -347,7 +332,6 @@ function callFetch(input, stateInput) {
 
   fetchRequest(covidURL(stateInput), covidOptions, displayCovid);
 
-
 }
 
 //Event listener form for city selection submit button
@@ -363,20 +347,19 @@ function watchSubmit(responseJson) {
 
     $("#selectForm").addClass('hide');
 
-
     let limiter = 768;
     //Adjusts scroll depending on device width
     if ($(window).width() >= limiter) {
 
       window.scroll({
-        top: 900,
+        top: 800,
         behavior: 'smooth'
       });
 
     } else {
 
       window.scroll({
-        top: 450,
+        top: 600,
         behavior: 'smooth'
       });
     }
@@ -394,6 +377,7 @@ function handleResponse(responseJson) {
   })
   populateEducation(city);
 }
+
 
 //Populates education div with census info
 function populateEducation(city) {
