@@ -28,7 +28,7 @@ select {
 	box-sizing: border-box;
 	margin: 0;
 	border-radius: 5px;
-  margin-bottom: 50px;
+  margin-bottom: 25px;
   -moz-appearance: none;
 	-webkit-appearance: none;
   appearance: none;
@@ -261,7 +261,7 @@ fieldset {
 #selectForm {
   padding-left: 50px;
   padding-right: 50px;
-  padding-bottom: 350px;
+  padding-bottom: 300px;
 }
 
  footer {
