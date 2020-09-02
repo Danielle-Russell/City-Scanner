@@ -179,10 +179,6 @@ footer {
   header {
     display: none;
   }
-
-#states {
-   padding-bottom: 350px;
-}
   
 li {
   margin-left: 15px;
@@ -261,7 +257,6 @@ fieldset {
 #selectForm {
   padding-left: 50px;
   padding-right: 50px;
-  padding-bottom: 300px;
 }
 
  footer {

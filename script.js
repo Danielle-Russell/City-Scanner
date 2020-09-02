@@ -29,7 +29,11 @@ let covidOptions = {
 
 function displayCovid(responseJson) {
 
-  new Chart(document.getElementById("covidChart"), {
+  $("#submit").on('click', function () {
+    barChart.destroy();
+  })
+
+  let barChart = new Chart(document.getElementById("covidChart"), {
 
     type: 'horizontalBar',
     data: {
