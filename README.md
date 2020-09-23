@@ -1,7 +1,7 @@
 # City-Scanner
 <ul>
   
-  <li>Link to live app: https://daniellerussell-beep.github.io/City-Scanner/</li>
+  <li>Link to live app: https://Danielle-Russell.github.io/City-Scanner/</li>
   <li>Link to GitHub Repository: https://github.com/DanielleRussell-beep/City-Scanner.git</li>
   
   </ul>
